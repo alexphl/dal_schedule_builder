@@ -1,36 +1,31 @@
 import type { NextPage } from "next";
-import Head from "next/head";
 import Image from "next/image";
-import styles from "../styles/Home.module.css";
+import Heads from "./Head";
 import ClassList from "./ClassList";
+import Schedule from "./Schedule";
 
 const Home: NextPage = () => {
   return (
     <div>
-      <Head>
-        <title>Dal Schedule builder</title>
-        <meta name="description" content="Dal Schedule builder" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
+      <Heads />
       <div className="absolute -z-10 bg-stone-100 w-screen h-80"></div>
       <div className="absolute -z-20 min-h-screen w-screen"></div>
 
-      <main className="w-screen grid grid-cols-2 py-2 px-12">
-        <h1 className="text-2xl font-medium my-5 col-start-1">
-          Schedule Buider
+      <div className="py-2 px-12">
+        <nav className="my-5">
+          <h1 className="text-2xl font-medium">Schedule Buider</h1>{" "}
+        </nav>
+
+        <h1 className="text-xl font-medium text-gray-500 my-4 hover:bg-gray-200 w-max p-1 rounded-sm -left-1 relative">
+          Winter
         </h1>
 
-        <div className="col-start-1">
-          <h1 className="text-xl font-medium text-gray-500 my-4 hover:bg-gray-200 w-max p-1 rounded-sm -left-1 relative">
-            Winter
-          </h1>
-          <div className="w-96 h-96 shadow-lg bg-white rounded-md p-3"></div>
-        </div>
+        <main className="grid grid-cols-2">
+          <Schedule className="col-start-1" />
 
-        <ClassList className={"relative right-0 col-start-2 w-96 h-full shadow-lg bg-white rounded-md p-3"}/>
-      </main>
+          <ClassList className="col-start-2" />
+        </main>
+      </div>
     </div>
   );
 };
