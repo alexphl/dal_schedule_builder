@@ -11,7 +11,7 @@ const Home: NextPage = () => {
       <div className="absolute -z-10 bg-stone-100 w-screen h-80"></div>
       <div className="absolute -z-20 min-h-screen w-screen"></div>
 
-      <div className="py-2 px-12">
+      <div className="py-2 px-12 lg:px-20 lg:py-6" id="app">
         <nav className="my-5">
           <h1 className="text-2xl font-medium">Schedule Buider</h1>{" "}
         </nav>
