@@ -10,10 +10,11 @@
     "preinstall": "npx npm-force-resolutions"
   },
   "resolutions": {
-   "glob-parent": "^6.0.1"
+    "glob-parent": "6.0.2"
   },
   "dependencies": {
     "@headlessui/react": "^1.6.6",
+    "base-64": "^1.0.0",
     "next": "12.2.2",
     "react": "18.2.0",
     "react-dom": "18.2.0"
