@@ -1,38 +1,15 @@
 import { useState, useEffect } from "react";
 
-function useFetch(url: string, uname?: string, pword?: string) {
-  uname = "";
-  pword = "";
-
+function useFetch(url: string, params?:object) {
   const [data, setData] = useState(null);
   const [isPending, setIsPending] = useState(true);
   const [error, setError] = useState(null);
 
-  const base64 = require("base-64");
-  var myheaders = new Headers();
-  myheaders.set("Authorization", "Basic " + base64.encode(uname + ":" + pword));
-  myheaders.set("Accept", "*/*");
-  myheaders.set("Accept-Language", "en-CA,en-US;q=0.7,en;q=0.3");
-  myheaders.set("Sec-Fetch-User", "?1");
-  myheaders.set("Content-Type", "application/x-www-form-urlencoded");
-  myheaders.set("Sec-Fetch-Mode", "cors");
-  myheaders.set("Sec-Fetch-Site", "same-origin");
-  myheaders.set("Sec-Fetch-Dest", "document");
-  myheaders.set("Sec-Fetch-Mode", "navigate");
-  myheaders.set("Upgrade-Insecure-Requests", "1");
-
   useEffect(() => {
-    fetch(url, {
-      method: "GET",
-      headers: myheaders,
-      mode: "cors",
-      credentials: "include",
-      referrer:
-        "https://register.dal.ca/StudentRegistrationSsb_PROD/ssb/classRegistration/",
-    })
+    fetch(url, params)
       .then((res) => {
         if (!res.ok) {
-          // error coming back from server
+          // server error
           throw Error("could not fetch the data for that resource");
         }
         return res.json();
@@ -46,7 +23,7 @@ function useFetch(url: string, uname?: string, pword?: string) {
         if (err.name === "AbortError") {
           console.log("fetch aborted");
         } else {
-          // auto catches network / connection error
+          // network / connection error
           setIsPending(false);
           setError(err.message);
         }
