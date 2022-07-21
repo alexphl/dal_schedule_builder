@@ -3,8 +3,8 @@ import Image from "next/image";
 import Heads from "./Head";
 import ClassList from "./ClassList";
 import Schedule from "./Schedule";
-import TermListbox from "./listbox";
-import { useState } from "react";
+import TermListbox from "./Listbox";
+import { useEffect, useState } from "react";
 import useFetch from "./useFetch";
 
 const Home: NextPage = () => {
@@ -17,7 +17,7 @@ const Home: NextPage = () => {
     {mode: "no-cors"}
   );
 
-  const [selectedTerm, setSelectedTerm] = useState();
+  const [selectedTerm, setSelectedTerm] = useState("Loading...");
 
   return (
     <div>

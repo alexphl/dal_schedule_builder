@@ -1,11 +1,14 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Listbox, Transition } from "@headlessui/react";
 import { CheckIcon, SelectorIcon } from "@heroicons/react/solid";
 
-const TermListbox = (props: { terms: any; selector?: any; }) => {
+const TermListbox = (props: { terms: any; selector: any }) => {
   const terms = props.terms;
   const [selected, setSelected] = props.selector;
-  setSelected(terms[0]);
+
+  useEffect(() => {
+    setSelected(terms[0]);
+  }, []);
 
   return (
     <div className="w-max font-medium">
@@ -63,6 +66,6 @@ const TermListbox = (props: { terms: any; selector?: any; }) => {
       </Listbox>
     </div>
   );
-}
+};
 
 export default TermListbox;
