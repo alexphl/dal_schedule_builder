@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
 
-function useFetch(url: string) {
+function useFetch(url: string, uname?: string, pword?: string) {
+  uname = "";
+  pword = "";
+
   const [data, setData] = useState(null);
   const [isPending, setIsPending] = useState(true);
   const [error, setError] = useState(null);
-
-  const uname = "";
-  const pword = "";
 
   const base64 = require("base-64");
   var myheaders = new Headers();
@@ -15,7 +15,6 @@ function useFetch(url: string) {
   myheaders.set("Accept-Language", "en-CA,en-US;q=0.7,en;q=0.3");
   myheaders.set("Sec-Fetch-User", "?1");
   myheaders.set("Content-Type", "application/x-www-form-urlencoded");
-  myheaders.set("Origin", "");
   myheaders.set("Sec-Fetch-Mode", "cors");
   myheaders.set("Sec-Fetch-Site", "same-origin");
   myheaders.set("Sec-Fetch-Dest", "document");
@@ -28,6 +27,8 @@ function useFetch(url: string) {
       headers: myheaders,
       mode: "cors",
       credentials: "include",
+      referrer:
+        "https://register.dal.ca/StudentRegistrationSsb_PROD/ssb/classRegistration/",
     })
       .then((res) => {
         if (!res.ok) {
