@@ -3,8 +3,11 @@ import Image from "next/image";
 import Heads from "./Head";
 import ClassList from "./ClassList";
 import Schedule from "./Schedule";
+import auth from "./auth";
 
 const Home: NextPage = () => {
+  //auth();
+
   return (
     <div>
       <Heads />

@@ -5,27 +5,28 @@ function useFetch(url: string) {
   const [isPending, setIsPending] = useState(true);
   const [error, setError] = useState(null);
 
-  //const headers = new Headers();
-  //var base64 = require("base-64");
+  const uname = "";
+  const pword = "";
+
+  const base64 = require("base-64");
+  var myheaders = new Headers();
+  myheaders.set("Authorization", "Basic " + base64.encode(uname + ":" + pword));
+  myheaders.set("Accept", "*/*");
+  myheaders.set("Accept-Language", "en-CA,en-US;q=0.7,en;q=0.3");
+  myheaders.set("Sec-Fetch-User", "?1");
+  myheaders.set("Content-Type", "application/x-www-form-urlencoded");
+  myheaders.set("Origin", "");
+  myheaders.set("Sec-Fetch-Mode", "cors");
+  myheaders.set("Sec-Fetch-Site", "same-origin");
+  myheaders.set("Sec-Fetch-Dest", "document");
+  myheaders.set("Sec-Fetch-Mode", "navigate");
+  myheaders.set("Upgrade-Insecure-Requests", "1");
 
   useEffect(() => {
     fetch(url, {
-      headers: {
-        "accept": "application/json, text/javascript, */*; q=0.01",
-        "accept-language": "en-US,en;q=0.9,ru-RU;q=0.8,ru;q=0.7",
-        "cache-control": "no-cache",
-        'pragma': "no-cache",
-        "sec-fetch-dest": "empty",
-        "sec-fetch-mode": "cors",
-        "sec-fetch-site": "same-origin",
-        "x-requested-with": "XMLHttpRequest",
-      },
-      referrer:
-        "https://register.dal.ca/StudentRegistrationSsb_PROD/ssb/term/termSelection?mode=registration",
-      referrerPolicy: "strict-origin-when-cross-origin",
-      body: null,
       method: "GET",
-      mode: "no-cors",
+      headers: myheaders,
+      mode: "cors",
       credentials: "include",
     })
       .then((res) => {

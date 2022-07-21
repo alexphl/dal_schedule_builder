@@ -1,17 +1,14 @@
 import useFetch from "./useFetch";
-import useAuth from "./auth";
 
 function Schedule(props?: any) {
-	//const { data: tokens } = useAuth();
-
-	const { error, isPending, data } = useFetch(
-		"https://register.dal.ca/StudentRegistrationSsb_PROD/ssb/classRegistration/getTerms?searchTerm=&offset=1&max=10"
+	const { error, isPending, data: result } = useFetch(
+		"https://register.dal.ca:443/StudentRegistrationSsb_PROD/ssb/searchResults?"
 	);
 
 	return (
 		<div className={props.className}>
 			<div className="w-96 h-96 shadow-lg bg-white rounded-md p-3">
-				{data} {error}
+				{result && result.totalCount} {error}
 			</div>
 		</div>
 	);
